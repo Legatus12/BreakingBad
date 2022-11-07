@@ -1,7 +1,7 @@
 <template>
-  <Nav @modifiedInput="searchCharacters"/>
-  <List :characters="this.list"/>
-  <FavList/>
+  <Nav @modifiedInput="searchCharacter"/>
+  <List :characters="this.list" @favListened="addToFavs"/>
+  <FavList :favCharacters="this.favlist"/>
 </template>
 
 <script>
@@ -22,14 +22,17 @@
       }
     },
     methods:{
-      async searchCharacters(name){
-          try {
-              const response = await axios.get(`https://www.breakingbadapi.com/api/characters?name=${name}`);
-              console.log(response.data)
-              this.list = response.data;
-          } catch (error) {
-              console.log(error);
-          }
+      async searchCharacter(name){
+        try {
+          const response = await axios.get(`https://www.breakingbadapi.com/api/characters?name=${name}`);
+          console.log(response.data)
+          this.list = response.data;
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      addToFavs(obj){
+        this.favlist.push(obj)
       }
     }
   }

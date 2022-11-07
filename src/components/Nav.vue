@@ -1,21 +1,12 @@
 <template>
-    <div class="basis-1/5 bg-[#86895d] flex flex-wrap">
-        <div class="basis-1/2">
-            <h1>Breaking Bad</h1> 
-            <h1>Characters</h1>
+    <div id="nav">
+        <div>
+            <h1>Breaking Bad Characters</h1>
         </div>
-        <div class="basis-1/2">
-            <label for="entrada" class="">Busca a un personaje</label>
+        <div>
+            <label for="input">Busca a un personaje</label>
             <br>
-            <input
-                ref="input"
-                v-model="input"
-                id="character"
-                type="text"
-                name="input"
-                class=""
-                @keypress="sendInput" @keyup.delete="sendInput"
-            />
+            <input ref="input" v-model="input" id="input" type="text" @keydown.enter="sendInput"/>
         </div>
     </div>
 </template>
