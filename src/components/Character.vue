@@ -1,25 +1,26 @@
 <template>
     <div id="character">
         <div>
-            <img :src="obj.img">
+            <img :src="this.obj.img">
         </div>
         <div>
-            <p>{{ obj.name }} <i>"{{ obj.nickname }}"</i></p>
-            <p>fecha de nacimiento: {{ obj.birthday }}</p>
+            <p>{{ this.obj.name }} <i>"{{ this.obj.nickname }}"</i></p>
+            <p>fecha de nacimiento: {{ this.obj.birthday }}</p>
             <ul>
-                <li v-for="occupation in obj.occupation">{{ occupation }}</li>
+                <li v-for="occupation in this.obj.occupation">{{ occupation }}</li>
             </ul>
-            <button @click="clickFav">FAV</button>
+            <button @click="clickFav">{{ this.favBtn }}</button>
         </div>
     </div>
 </template>
 
-<script>
+<script lang="ts">
     export default {
         name: "Character",
         emits: ["favClicked"],
         props:{
-            obj: Object
+            obj: Object,
+            favBtn : String
         },
         methods:{
             clickFav(){

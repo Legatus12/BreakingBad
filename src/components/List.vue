@@ -2,24 +2,25 @@
     <div>
         <h1>list</h1>
         <div v-for="character in this.characters">
-            <Character :obj="character" @favClicked="listenFav"/>
+            <Character :obj="character" @favClicked="send" :favBtn="this.btnText"/>
         </div>
     </div>
 </template>
 
-<script lang="ts">
+<script>
     import Character from './Character.vue';
 
     export default {
         name: "List",
-        emits: ["favListened"],
+        emits: ["favAdded", "favRemoved"],
         components:{Character},
         props:{
             characters: Array,
+            btnText: String
         },
         methods:{
-            listenFav(obj){
-                this.$emit("favListened", obj);
+            send(obj){
+                this.$emit("favListModified", obj);
             }
         }
     }
