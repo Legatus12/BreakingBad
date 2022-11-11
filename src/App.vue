@@ -1,7 +1,11 @@
 <template>
-  <Nav @modifiedInput="searchCharacter"/>
-  <List :characters="this.list" @favListModified="addToFavList" btnText="add"/>
-  <List :characters="this.favList" @favListModified="removeFromFavList" btnText="remove"/>
+  <div class="w-full h-full flex flex-col bg-[#2d572c]">
+    <Nav @modifiedInput="searchCharacter" class="w-full h-full basis-1/5"/>
+    <div class="w-full h-full basis-4/5">
+      <List :characters="this.list" @favListModified="addToFavList" btnText="add"/>
+      <List :characters="this.favList" @favListModified="removeFromFavList" btnText="remove"/>
+    </div>
+  </div>
 </template>
 
 <script>
