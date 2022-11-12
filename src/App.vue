@@ -2,7 +2,7 @@
   <div class="w-full h-full flex flex-col bg-[#2d572c] font-Montserrat">
     <Header @modifiedInput="searchCharacter" class="w-full h-60"/>
 
-    <Menu @charactersClicked="renderCharacters" @favsClicked="renderFavs" />
+    <Menu @charactersClicked="renderCharacters" @favsClicked="renderFavs" :menu=this.control />
 
     <List v-if="this.loading === false" :characters="this.activeList" @favListModified="modFavList" :favId="this.favList.map(x => x.char_id)" class="w-full h-full"/>
     <div v-else class="w-full h-full text-[#f6f6f6] text-4xl gap-8 p-8 flex items-center justify-center">cargando...</div>
@@ -42,7 +42,7 @@ export default {
         this.loading = false;
         console.log(response.data);
         this.list = response.data;
-        this.activeList = this.list;
+          this.renderCharacters();
       } 
       catch (error) {
         console.log(error);

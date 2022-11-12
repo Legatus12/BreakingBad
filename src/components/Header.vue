@@ -1,6 +1,6 @@
 <template>
     <!--Header-->
-    <div class="bg-[#f6f6f6] flex flex-col md:flex-row-reverse justify-center md:justify-start items-center gap-10 p-4">
+    <div class="w-full bg-[#f6f6f6] flex flex-col md:flex-row-reverse justify-center md:justify-start items-center gap-10 p-2 md:p-4">
         <!--Logo-->
         <div class="hidden md:block w-52 md:w-54 md:h-40">
             <img src="https://img.icons8.com/ios/500/breaking-bad.png" class="md:w-54 md:h-40">
@@ -13,8 +13,12 @@
             <p class="w-full text-xl md:text-4xl text-center md:text-left">
                 Buscador de <span class="underline decoration-[#ffba00] font-bold">personajes</span> de <span class="text-[#2d572c] font-black">Breaking&nbsp;Bad</span>
             </p>
-            <input ref="input" v-model="input" id="input" type="text" @keydown.enter="sendInput" placeholder="Introduce un nombre..."
-            class="w-full md:w-96 bg-[#2d572c] text-[#f6f6f6] p-4 rounded-full"/>
+            <div class="flex justify-center md:justify-start gap-2">
+                <input ref="input" v-model="this.input" id="input" type="text" @keydown.enter="sendInput" :placeholder="this.search"
+                class="w-full md:w-96 bg-[#2d572c] text-sm md:text-xl text-[#f6f6f6] p-4 rounded-full"/>
+                <button @click="cancelSearch" v-if="searching"
+                class="rounded-full p-4 w-14 md:w-16 text-sm md:text-xl bg-[#ffba00]">x</button>
+            </div>
         </div>
     </div>
 </template>
@@ -22,18 +26,28 @@
 <script>
 
     export default {
-        name: "Nav",
+        name: "Header",
         emits: ["modifiedInput"],
         data(){
             return{
                 input: "",
-                search: "A"
+                search: "Introduce un nombre...",
+                searching: false
             }
         },
         methods:{
             sendInput(){
                 this.$emit("modifiedInput", this.input);
+                this.search = `Buscando a '${this.input}'`;
+                this.input = "";
+                this.searching = true;
             },
+            cancelSearch(){
+                this.$emit("modifiedInput", "");
+                this.search = "Introduce un nombre...";
+                this.input = "";
+                this.searching = false;
+            }
         }
     }
 

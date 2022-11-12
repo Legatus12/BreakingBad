@@ -3,7 +3,10 @@
         <div class="w-64 md:h-full flex items-center">
             <img :src="this.obj.img" v-if="this.more == false" class="object-cover h-full md:h-96">
             <div v-else class="h-full md:h-96 w-full bg-[#f6f6f6] text-[#232323] p-4 overflow-y-scroll md:overflow-y-hidden">
-                <p><span>fecha&nbsp;de nacimiento:</span></p>
+                <p>interpretado&nbsp;por:</p>
+                <p class="bg-[#232323] text-[#f6f6f6] w-fit">{{ this.obj.portrayed }}</p>
+                <br>
+                <p>fecha&nbsp;de nacimiento:</p>
                 <p class="bg-[#232323] text-[#f6f6f6] w-fit">{{ this.obj.birthday }}</p>
                 <br>
                 <p>status:</p>
@@ -42,7 +45,6 @@
         },
         props:{
             obj: Object,
-            favBtn : String,
             favourites: Array
         },
         methods:{
@@ -61,7 +63,7 @@
         },
         computed:{
             isFav(){
-                return this.favourites.filter(x => x == this.obj.char_id) > 0 ? "remove" : "add"
+                return this.favourites.filter(x => x == this.obj.char_id) > 0 ? "quitar de favoritos" : "añadir a favoritos"
             }
         }
     }
