@@ -1,9 +1,7 @@
 <template>
-    <div>
-        <h1>list</h1>
-        <div v-for="character in this.characters">
-            <Character :obj="character" @favClicked="send" :favBtn="this.btnText"/>
-        </div>
+    <div class="w-full h-full overflow-y-scroll flex flex-col md:flex-row md:flex-wrap md:justify-center gap-8 p-8 md:gap-16 md:p-16">
+        <Character v-for="character in this.characters" :obj="character" @favClicked="modifyFavs" :favourites="this.favId"/>
+        <div v-if="characters.length < 1" class="w-full h-full text-[#f6f6f6] text-4xl flex items-center justify-center">No se ha encontrado nada.</div>
     </div>
 </template>
 
@@ -12,14 +10,14 @@
 
     export default {
         name: "List",
-        emits: ["favAdded", "favRemoved"],
+        emits: ["favListModified"],
         components:{Character},
         props:{
             characters: Array,
-            btnText: String
+            favId: Array
         },
         methods:{
-            send(obj){
+            modifyFavs(obj){
                 this.$emit("favListModified", obj);
             }
         }
