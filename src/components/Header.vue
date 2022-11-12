@@ -17,7 +17,7 @@
                 <input ref="input" v-model="this.input" id="input" type="text" @keydown.enter="sendInput" :placeholder="this.search"
                 class="w-full md:w-96 bg-[#2d572c] text-sm md:text-xl text-[#f6f6f6] p-4 rounded-full"/>
                 <button @click="cancelSearch" v-if="searching"
-                class="rounded-full p-4 w-14 md:w-16 text-sm md:text-xl bg-[#ffba00]">x</button>
+                class="rounded-full p-4 w-14 md:w-16 text-sm md:text-xl bg-[#ffba00] hover:bg-[#ffe190] active:bg-[#ffba00] duration-300">x</button>
             </div>
         </div>
     </div>

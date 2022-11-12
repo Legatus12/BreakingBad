@@ -1,7 +1,7 @@
 <template>
     <div class="w-full h-14 flex justify-around bg-[#232323] text-[#ffba00]">
-        <button @click="clickChars" class="active:border-2 border-solid border-[#ffba00]">Personajes</button>
-        <button @click="clickFavs">Favoritos</button>
+        <button @click="clickChars" class="duration-200 hover:text-[#ffe190] text:bg-[#ffba00]">Personajes</button>
+        <button @click="clickFavs" class="duration-200 hover:text-[#ffe190] text:bg-[#ffba00]">Favoritos</button>
     </div>
     <div class="w-full h-2 bg-[#232323] flex">
         <div class="w-1/2 h-1.5 bg-[#ffba00] absolute left-0" v-show="this.menu == true"></div>
