@@ -42,11 +42,10 @@ export default {
         this.loading = false;
         console.log(response.data);
         this.list = response.data;
-          this.renderCharacters();
+        this.renderCharacters();
       } 
       catch (error) {
         console.log(error);
-        console.log("something happened while loading characters.");
       }
     },
     modFavList(obj){

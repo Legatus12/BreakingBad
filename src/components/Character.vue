@@ -18,7 +18,7 @@
         </div>
         <div class="w-64 flex flex-col justify-center p-4 gap-4">
             <div class="h-1/2 md:h-fit md:flex md:flex-col md:items-center">
-                <p>{{ this.obj.name }}</p>
+                <p><b>{{ this.obj.name }}</b></p>
                 <p><i>"{{ this.obj.nickname }}"</i></p>
             </div>
             <button @click="clickMore"
@@ -33,7 +33,7 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
     export default {
         name: "Character",
         emits: ["favClicked"],
@@ -54,7 +54,7 @@
             },
             clickFav(){
                 if(this.favourites.filter(x => x == this.obj.char_id) > 0){
-                    if (confirm(`¿Estás seguro de eliminar a ${ this.obj.name } de la lista de favoritos?`))
+                    if (confirm(`¿Quieres eliminar a ${ this.obj.name } de la lista de favoritos?`))
                         this.$emit("favClicked", this.obj);
                 }
                 else
