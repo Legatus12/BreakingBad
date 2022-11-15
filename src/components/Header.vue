@@ -36,7 +36,7 @@ export default {
     },
     methods:{
         sendInput(){
-            this.$emit("modifiedInput", this.input);
+            this.$emit("modifiedInput", this.input.toLowerCase());
             this.search = `Buscando a '${this.input}'`;
             this.input = "";
             this.searching = true;
