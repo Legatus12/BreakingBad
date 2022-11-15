@@ -6,7 +6,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      'montserrat': ['Montserrat', 'Serif']
+      'Montserrat': ['Montserrat', 'Serif']
     },
   },
   plugins: [],

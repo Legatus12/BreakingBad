@@ -4,8 +4,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap');
 
-@font-face {
-    font-family: 'montserrat';
+@font-face{
+    font-family: 'Montserrat';
     src: url('../assets/Montserrat-VariableFont_wght.ttf');
 }
 
@@ -13,4 +13,17 @@ html, body, #app{
     font-family: 'Montserrat';
     width: 100%;
     height: 100%;
+}
+
+/*scrollbar*/
+::-webkit-scrollbar{
+    background-color: #244623;
+    width: 16px;
+}
+::-webkit-scrollbar-thumb{
+    background: #ffba00; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #ffe190; 
 }

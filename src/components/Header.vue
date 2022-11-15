@@ -1,9 +1,8 @@
 <template>
-    <!--Header-->
     <div class="w-full bg-[#f6f6f6] flex flex-col md:flex-row-reverse justify-center md:justify-start items-center gap-10 p-2 md:p-4">
         <!--Logo-->
         <div class="hidden md:block w-52 md:w-54 md:h-40">
-            <img src="https://img.icons8.com/ios/500/breaking-bad.png" class="md:w-54 md:h-40">
+            <img src="https://img.icons8.com/ios/500/breaking-bad.png" class="md:w-54 md:h-40 duration-300 hover:scale-110">
         </div>
         <!--Input-->
         <div class="w-full flex flex-col gap-1 md:gap-6">
@@ -25,31 +24,31 @@
 
 <script>
 
-    export default {
-        name: "Header",
-        emits: ["modifiedInput"],
-        data(){
-            return{
-                input: "",
-                search: "Introduce un nombre...",
-                searching: false
-            }
+export default {
+    name: "Header",
+    emits: ["modifiedInput"],
+    data(){
+        return{
+            input: "",
+            search: "Introduce un nombre...",
+            searching: false
+        }
+    },
+    methods:{
+        sendInput(){
+            this.$emit("modifiedInput", this.input);
+            this.search = `Buscando a '${this.input}'`;
+            this.input = "";
+            this.searching = true;
         },
-        methods:{
-            sendInput(){
-                this.$emit("modifiedInput", this.input);
-                this.search = `Buscando a '${this.input}'`;
-                this.input = "";
-                this.searching = true;
-            },
-            cancelSearch(){
-                this.$emit("modifiedInput", "");
-                this.search = "Introduce un nombre...";
-                this.input = "";
-                this.searching = false;
-            }
+        cancelSearch(){
+            this.$emit("modifiedInput", "");
+            this.search = "Introduce un nombre...";
+            this.input = "";
+            this.searching = false;
         }
     }
+}
 
 </script>
 
